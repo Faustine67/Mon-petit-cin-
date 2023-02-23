@@ -1,13 +1,13 @@
 <?php ob_start(); ?>
 
-<p class="uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> castings </p>
+<p> Il y a <?= $requete->rowCount() ?> castings </p>
 
-table class= "uk-table uk-table-striped">
+<table>
     <thread>
         <tr>
-            <th>Liste des Castings></th>
             <th>Film</th>
-            <th>Acteur</th>
+            <th> Prenom de l'acteur</th>
+            <th> Nom de l'acteur</th>
             <th>Role</th>
         </tr>
      </thread>
@@ -16,9 +16,10 @@ table class= "uk-table uk-table-striped">
         <?php
             foreach ($requete->fetchAll() as $casting){ ?>
             <tr>
-                <td><?= $casting["film_id"] ?></td>
-                <td><?= $casting["acteur_id"] ?></td>
-                <td><?= $casting["role_id"] ?></td>
+                <td><?= $casting["titre"] ?></td>
+                <td><?= $casting["acteurNom"] ?></td>
+                <td><?= $casting["acteurPrenom"] ?></td>
+                <td><?= $casting["roleNom"] ?></td>
             </tr>
         <?php }?>
         </tbody>

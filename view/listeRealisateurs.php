@@ -1,20 +1,22 @@
 <?php ob_start(); ?>
 
-<p class="uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> realisateurs </p>
+<p> Il y a <?= $requete->rowCount() ?> realisateurs </p>
 
-table class= "uk-table uk-table-striped">
+<table>
     <thread>
         <tr>
-            <th>Liste des réalisateurs></th>
+            <th>Liste des réalisateurs</th>
             <th>Nom</th>
             <th>Prénom</th>
         </tr>
      </thread>
 
      <tbody>
-        <?php
-            foreach ($requete->fetchAll() as $acteur){ ?>
+        <?php 
+        $i=0;
+            foreach ($requete->fetchAll() as $realisateur){ ?>
             <tr>
+                <td> <?= $i++?></td>
                 <td><?= $realisateur["nom"] ?></td>
                 <td><?= $realisateur["prenom"] ?></td>
             </tr>
@@ -24,7 +26,7 @@ table class= "uk-table uk-table-striped">
 
     <?php
 
-    $titre = "Liste des acteurs";
-    $titre_secondaire= "Liste des acteurs";
+    $titre = "Liste des realisateurs";
+    $titre_secondaire= "Liste des realisateurs";
     $contenu = ob_get_clean();
     require "view/template.php";

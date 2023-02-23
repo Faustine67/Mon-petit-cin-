@@ -1,19 +1,20 @@
 <?php ob_start(); ?>
+<p > Il y a <?= $requete->rowCount() ?> genres </p>
 
-<p class="uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> genres </p>
-
-table class= "uk-table uk-table-striped">
+<table>
     <thread>
         <tr>
-            <th>Liste des Genre></th>
+            <th>Liste des Genre</th>
             <th>Genre</th>
         </tr>
      </thread>
 
      <tbody>
         <?php
+        $i=0;
             foreach ($requete->fetchAll() as $genre){ ?>
             <tr>
+                <td> <?=$i++?></td>
                 <td><?= $genre["libelle"] ?></td>
             </tr>
         <?php }?>

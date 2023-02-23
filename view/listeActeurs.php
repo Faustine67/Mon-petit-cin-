@@ -1,11 +1,11 @@
 <?php ob_start(); ?>
 
-<p class="uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> acteurs </p>
+<p> Il y a <?= $requete->rowCount() ?> acteurs </p>
 
-table class= "uk-table uk-table-striped">
+<table>
     <thread>
         <tr>
-            <th>Liste des Acteurs></th>
+            <th>Liste des Acteurs</th>
             <th>Photo</th>
             <th>Nom</th>
             <th>Prénom</th>
@@ -16,8 +16,11 @@ table class= "uk-table uk-table-striped">
 
      <tbody>
         <?php
+        $i=0;
             foreach ($requete->fetchAll() as $acteur){ ?>
             <tr>
+                <td> <?= $i++ ?></td>
+                <td> Photo </td>
                 <td><?= $acteur["nom"] ?></td>
                 <td><?= $acteur["prenom"] ?></td>
                 <td><?= $acteur["sexe"] ?></td>
