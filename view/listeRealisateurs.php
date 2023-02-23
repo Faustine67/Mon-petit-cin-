@@ -1,16 +1,13 @@
 <?php ob_start(); ?>
 
-<p class="uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> acteurs </p>
+<p class="uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> realisateurs </p>
 
 table class= "uk-table uk-table-striped">
     <thread>
         <tr>
-            <th>Liste des Acteurs></th>
-            <th>Photo</th>
+            <th>Liste des réalisateurs></th>
             <th>Nom</th>
             <th>Prénom</th>
-            <th>Genre</th>
-            <th>Date de Naissance</th>
         </tr>
      </thread>
 
@@ -18,10 +15,8 @@ table class= "uk-table uk-table-striped">
         <?php
             foreach ($requete->fetchAll() as $acteur){ ?>
             <tr>
-                <td><?= $acteur["nom"] ?></td>
-                <td><?= $acteur["prenom"] ?></td>
-                <td><?= $acteur["sexe"] ?></td>
-                <td><?= $acteur["date_naissance"] ?></td>
+                <td><?= $realisateur["nom"] ?></td>
+                <td><?= $realisateur["prenom"] ?></td>
             </tr>
         <?php }?>
         </tbody>
