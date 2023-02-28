@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
     <title><?=$titre?></title>
 </head>
 <body>
 <header>
         <h1> Mon petit ciné </h1>
+        <div class="accueil">
+            <p>Accueil</p>
+        </div>
+        <div class="compte">
+            <p>Mon compte </p>
+        </header>
+<main>
         <nav>
             <ul>
                 <li><a href="index.php?action=listFilms">Les films</a></li>
@@ -20,7 +28,7 @@
                 <li><a href="index.php?action=listRoles">Les Roles</a></li>
             </ul>
         </nav>
-    </header>
     <?= $contenu?>
+<main>
 </body>
 </html>
