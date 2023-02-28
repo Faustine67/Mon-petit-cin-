@@ -1,7 +1,5 @@
-
-   
-
 <?php
+
 use Controller\CinemaController;
 
 spl_autoload_register(function($class_name) {
@@ -28,7 +26,7 @@ if(isset ($_GET["action"])){
 }
 
 else{
-    $ctrlCinema->listFilms();
+    $ctrlCinema->listActeurs();
 }
 
 ?>

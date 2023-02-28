@@ -26,7 +26,7 @@
                 <td><?= $acteur["sexe"] ?></td>
                 <td><?= $acteur["date_naissance"] ?></td>
             </tr>
-        <?php }?>
+        <?php } ?>
         </tbody>
     </table>
 
