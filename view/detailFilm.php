@@ -9,6 +9,14 @@
 <p>Date de sortie: <?=$film["date_sortie"]?></p>
 <p>Note: <?=$film["note"]?>/5</p>
 
+<?php
+for ($i=1; $i<=$film["note"];$i++){
+    echo "<i class='fa-solid fa-star'></i>";
+}
+for ($a=1; $a<= 5-$film["note"];$a++){
+    echo "<i class='fa-regular fa-star'></i>";
+    }
+?>
 <h2>Casting</h2>
 <table>
     <tr>

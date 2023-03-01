@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
-    <title><?=$titre?></title>
+    <script src="https://kit.fontawesome.com/7d5bcac921.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <header>
@@ -30,3 +31,4 @@
 <main>
 </body>
 </html>
+
