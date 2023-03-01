@@ -11,7 +11,7 @@ class CinemaController {
     public function listFilms() {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT titre, synopsis, duree, note, date_sortie,libelle
+            SELECT id_film, titre, synopsis, duree, note, date_sortie,libelle
             FROM film
             INNER JOIN genre ON film.genre_id = genre.id_genre
             ");
@@ -60,5 +60,17 @@ class CinemaController {
         INNER JOIN role r ON c.role_id=r.id_role
         ");
         require "view/listeCastings.php";
+    }
+
+    public function detailFilm($id) {
+
+        $pdo = Connect::seConnecter();
+        $requete= $pdo->prepare("
+            SELECT f.titre AS titre
+            FROM film f
+            WHERE f.id_film = :id_film
+        ");
+        $requete->execute(["id_film" => $id]);
+        require "view/detailFilm.php";
     }
 }
