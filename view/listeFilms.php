@@ -4,10 +4,6 @@
     <thread>
         <tr>
             <th>Titre</th>
-            <th>Année de Sortie</th>
-            <th> Durée</th>
-            <th>Genre</th>
-            <th> Synopsis</th>
         </tr>
      </thread>
      <tbody>
@@ -15,10 +11,6 @@
             foreach ($requete->fetchAll() as $film){ ?>
             <tr>
                 <td><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><?= $film["titre"] ?></a></td>
-                <td><?= $film["date_sortie"] ?></td>
-                <td><?=$film["duree"]?></td>
-                <td><?=$film["libelle"]?></td>
-                <td><?=$film["synopsis"]?></td>
             </tr>
         <?php }?>
         </tbody>

@@ -66,8 +66,9 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete= $pdo->prepare("
-            SELECT f.titre AS titre
+            SELECT f.titre AS titre, f.synopsis, f.duree, f.note,f.realisateur_id,genre_id,date_sortie
             FROM film f
+            INNER JOIN realisateur r
             WHERE f.id_film = :id_film
         ");
         $requete->execute(["id_film" => $id]);
