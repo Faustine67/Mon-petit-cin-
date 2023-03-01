@@ -20,9 +20,7 @@
                 <li><a href="index.php?action=listFilms">Les films</a></li>
                 <li><a href="index.php?action=listActeurs">Les acteurs</a></li>
                 <li><a href="index.php?action=listRealisateurs">Les realisateurs</a></li>
-                <li><a href="index.php?action=listCastings">Les castings</a></li>
                 <li><a href="index.php?action=listGenres">Les Genres</a></li>
-                <li><a href="index.php?action=listRoles">Les Roles</a></li>
             </ul>
         </nav>
 </header>

@@ -4,30 +4,29 @@
 ?>
 
 <h1><?= $film["titre"] ?></h1>
+<p>Réalisateur: <?=$film["nom"]?> <?=$film["prenom"]?></p>
+<p>Durée:<?=$film["duree"]?></p>
+<p>Date de sortie: <?=$film["date_sortie"]?></p>
+<p>Note: <?=$film["note"]?>/5</p>
 
+<h2>Casting</h2>
 <table>
-    <thread>
+    <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Role</th>
+    </tr>
+
+<?php
+    foreach ($casting->fetchAll() as $casting){ ?>
         <tr>
-            <th>Titre</th>
-            <th>Année de Sortie</th>
-            <th> Durée</th>
-            <th>Genre</th>
-            <th> Synopsis</th>
+            <td><?= $casting["acteurNom"] ?></td>
+            <td><?= $casting["acteurPrenom"] ?></td>
+            <td><?= $casting["roleNom"] ?></td>
         </tr>
-     </thread>
-     <tbody>
-        <?php
-            foreach ($requete->fetchAll() as $film){ ?>
-            <tr>
-                <td><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><?= $film["titre"] ?></a></td>
-                <td><?= $film["date_sortie"] ?></td>
-                <td><?=$film["duree"]?></td>
-                <td><?=$film["libelle"]?></td>
-                <td><?=$film["synopsis"]?></td>
-            </tr>
-        <?php }?>
-        </tbody>
-    </table>
+<?php }?>
+</table>
+
 <?php
 
 $titre = "Details des films";
