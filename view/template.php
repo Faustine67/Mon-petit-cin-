@@ -11,15 +11,12 @@
 <body>
 <header>
         <h1> Mon petit ciné </h1>
-        <div class="accueil">
-            <p>Accueil</p>
+        <div class= "information">
+        <button class="accueil" type="button">Accueil</button>
+        <button class="compte" type="button">Mon compte</button>
         </div>
-        <div class="compte">
-            <p>Mon compte </p>
-        </header>
-<main>
         <nav>
-            <ul>
+            <ul class="horizontal list">
                 <li><a href="index.php?action=listFilms">Les films</a></li>
                 <li><a href="index.php?action=listActeurs">Les acteurs</a></li>
                 <li><a href="index.php?action=listRealisateurs">Les realisateurs</a></li>
@@ -28,7 +25,10 @@
                 <li><a href="index.php?action=listRoles">Les Roles</a></li>
             </ul>
         </nav>
-    <?= $contenu?>
+        </header>
+        <main>
+      <?= $contenu?>      
+        </main>
 <main>
 </body>
 </html>

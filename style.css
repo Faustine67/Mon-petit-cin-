@@ -4,8 +4,10 @@ header{
     width:100px;
     background-color:red;
     width: 100%;
-    height:50px;
+    height:50%;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }
 h1{
     font-size:40px;
@@ -15,15 +17,48 @@ h1{
     text-align: center;
     font-family: Aldrich;
 }
+.information{
+    display:flex;
+    flex-direction: column;
+    align-items:end;
+    
+}
 .accueil{
-    font-size:40px;
+    font-size: 15px;
     margin-top:0;
     margin-bottom:15px;
     background-color:white;
     color:red;
     text-align: center;
     font-family: Aldrich;
-    width:10%
-    height:5%
+    width:10%;
+    height:5%;
     border-radius:10px;
+}
+.compte{
+    font-size: 15px;
+    margin-top:0;
+    margin-bottom:15px;
+    background-color:white;
+    color:red;
+    text-align: center;
+    font-family: Aldrich;
+    width:10%;
+    height:5%;
+    border-radius:10px;
+}
+nav{
+    text-align: center;
+}
+.horizontal-list{
+    list-style-type: none;
+    margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.horizontal-list li{
+    display: inline-block;
+}
+.horizontal-list a{
+    display: block;
 }
