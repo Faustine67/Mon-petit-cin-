@@ -7,7 +7,7 @@
 <p>Réalisateur: <?=$film["nom"]?> <?=$film["prenom"]?></p>
 <p>Durée:<?=$film["duree"]?></p>
 <p>Date de sortie: <?=$film["date_sortie"]?></p>
-<p>Note: <?=$film["note"]?>/5</p>
+<p>Note:
 
 <?php
 for ($i=1; $i<=$film["note"];$i++){
