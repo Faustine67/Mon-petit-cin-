@@ -53,8 +53,8 @@ nav{
 .horizontal-list{
     list-style-type: none;
     margin: 0;
-  padding: 0;
-  text-align: center;
+    padding: 0;
+    text-align: center;
 }
 .horizontal-list li{
     display: inline-block;

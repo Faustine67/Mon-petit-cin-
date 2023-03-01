@@ -25,7 +25,7 @@
                 <li><a href="index.php?action=listRoles">Les Roles</a></li>
             </ul>
         </nav>
-        </header>
+</header>
         <main>
       <?= $contenu?>      
         </main>
