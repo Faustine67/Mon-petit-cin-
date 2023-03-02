@@ -2,23 +2,21 @@
 
 <p> Il y a <?= $requete->rowCount() ?> acteurs </p>
 
+<h2>Liste des Acteurs</h2>
 <table>
     <thread>
         <tr>
-            <th>Liste des Acteurs</th>
-            <th>Photo</th>
             <th>Nom</th>
             <th>Prénom</th>
-            <th>Genre</th>
-            <th>Date de Naissance</th>
         </tr>
      </thread>
-
      <tbody>
-        <?php
-            foreach ($requete->fetchAll() as $acteur){ ?>
+         <?php
+            foreach ($requete->fetchAll() as $acteur){   
+            ?>
             <tr>
-                <td><a href= "index.php?action=detailActeur&id=<?=$acteur["id_acteur"]?>"<?=$acteur["acteurNom"]?></a></td>
+                <td><a href= "index.php?action=detailActeur&id=<?=$acteur["id_acteur"]?>"><?=$acteur["prenom"]?></a></td>
+                <td><a href= "index.php?action=detailActeur&id=<?=$acteur["id_acteur"]?>"><?=$acteur["nomActeur"]?></a></td> 
             </tr>
      <?php }?>
     </tbody>

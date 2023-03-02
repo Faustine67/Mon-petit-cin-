@@ -4,6 +4,7 @@
 ?>
 
 <h1><?=$acteur["prenom"]?> <?$acteur["nom"]?></h1>
+    <p>Photos <p> 
     <p>Genre:<?=$acteur["sexe"]?></p>
     <p>Date de naissance: <?=$acteur["date_naissance"]?></p>
 
