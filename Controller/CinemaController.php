@@ -88,8 +88,7 @@ class CinemaController {
     }
 
     public function detailActeur($id){
-
-    $pdo = Connect::seConnecter();
+        $pdo = Connect::seConnecter();
         $requete= $pdo->prepare("
         SELECT a.nom as acteurNom, a.prenom as acteurPrenom, a.sexe, a.date_naissance
         FROM acteur a
@@ -106,6 +105,8 @@ class CinemaController {
         WHERE a.id_acteur = :id_acteur
         ");
         $filmographie->execute(["id_acteur"=> $id]);
+
+        
 
         require "view/detailActeur.php";
     }

@@ -3,7 +3,7 @@
     $acteur = $requete->fetch(); 
 ?>
 
-<h1><?=$acteur["prenom"]?> <?$acteur["nom"]?></h1>
+<h1><?=$acteur["acteurPrenom"]?> <?=$acteur["acteurNom"]?></h1>
     <p>Photos <p> 
     <p>Genre:<?=$acteur["sexe"]?></p>
     <p>Date de naissance: <?=$acteur["date_naissance"]?></p>
@@ -18,8 +18,8 @@
 <?php
     foreach ($filmographie->fetchAll() as $filmographie){ ?>
         <tr>
-            <td><?= $fimographie["titre"] ?></td>
-            <td><?= $casting["roleNom"] ?></td>
+            <td><?= $filmographie["titre"] ?></td>
+            <td><?= $filmographie["roleNom"] ?></td>
         </tr>
 <?php }?>
 </table>
