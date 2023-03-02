@@ -16,23 +16,17 @@
 
      <tbody>
         <?php
-        $i=0;
             foreach ($requete->fetchAll() as $acteur){ ?>
             <tr>
-                <td> <?= $i++ ?></td>
-                <td> Photo </td>
-                <td><?= $acteur["nom"] ?></td>
-                <td><?= $acteur["prenom"] ?></td>
-                <td><?= $acteur["sexe"] ?></td>
-                <td><?= $acteur["date_naissance"] ?></td>
+                <td><a href= "index.php?action=detailActeur&id=<?=$acteur["id_acteur"]?>"<?=$acteur["acteurNom"]?></a></td>
             </tr>
-        <?php } ?>
-        </tbody>
-    </table>
+     <?php }?>
+    </tbody>
+</table>
 
-    <?php
+<?php
 
-    $titre = "Liste des acteurs";
-    $titre_secondaire= "Liste des acteurs";
-    $contenu = ob_get_clean();
-    require "view/template.php";
+$titre = "Liste des acteurs";
+$titre_secondaire= "Liste des acteurs";
+$contenu = ob_get_clean();
+require "view/template.php";
