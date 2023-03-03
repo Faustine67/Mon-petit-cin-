@@ -45,7 +45,7 @@ class CinemaController {
     public function listGenres() {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-        SELECT libelle 
+        SELECT id_genre,libelle 
         FROM genre
         ");
         require "view/listeGenres.php";
