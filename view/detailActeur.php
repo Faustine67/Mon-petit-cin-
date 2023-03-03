@@ -16,10 +16,10 @@
     <tr>
         
 <?php
-    foreach ($filmographie->fetchAll() as $filmographie){ ?>
+    foreach ($filmographie->fetchAll() as $filmo){ ?>
         <tr>
-            <td><?= $filmographie["titre"] ?></td>
-            <td><?= $filmographie["roleNom"] ?></td>
+            <td><?= $filmo["titre"] ?></td>
+            <td><?= $filmo["roleNom"] ?></td>
         </tr>
 <?php }?>
 </table>
