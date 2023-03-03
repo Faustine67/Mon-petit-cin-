@@ -5,17 +5,14 @@
     <thread>
         <tr>
             <th>Liste des Genre</th>
-            <th>Genre</th>
         </tr>
      </thread>
 
      <tbody>
         <?php
-        $i=0;
             foreach ($requete->fetchAll() as $genre){ ?>
             <tr>
-                <td> <?=$i++?></td>
-                <td><?= $genre["libelle"] ?></td>
+            <td><a href="index.php?action=detailGenre&id=<?= $genre["id_genre"]?>"><?=$genre["libelle"] ?></a></td>
             </tr>
         <?php }?>
         </tbody>

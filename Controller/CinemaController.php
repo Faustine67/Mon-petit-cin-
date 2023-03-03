@@ -112,7 +112,7 @@ class CinemaController {
     public function detailRealisateur($id){
         $pdo = Connect::seConnecter();
         $requete= $pdo->prepare("
-        SELECT r.nom, r.prenom, r.sexe, r.date_naissance
+        SELECT r.nom, r.prenom
         FROM realisateur r
         WHERE r.id_realisateur = :id_realisateur
         ");
@@ -129,5 +129,27 @@ class CinemaController {
 
         require "view/detailRealisateur.php";
     }
+
+    public function detailGenre($id){
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+        SELECT libelle 
+        FROM genre g
+        WHERE g.id_genre= :id_genre
+        ");
+        $requete->execute(["id_genre"=> $id]);
+
+       $filmgenre=$pdo->prepare("
+       SELECT g.id_genre,f.titre ,f.synopsis,f.note,f.date_sortie
+            FROM film f
+            INNER JOIN genre g on f.genre_id=g.id_genre
+            WHERE g.id_genre = :id_genre
+        ");
+
+        $filmgenre->execute(["id_genre"=> $id]);
+
+        require "view/detailGenre.php";
+    }
+    
 
 }
