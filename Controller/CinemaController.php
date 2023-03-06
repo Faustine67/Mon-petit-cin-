@@ -151,5 +151,21 @@ class CinemaController {
         require "view/detailGenre.php";
     }
     
+    public function addRole(){ 
+        $pdo = Connect::SeConnecter();
+        $requete=$pdo->prepare("
 
+        if(isset($_POST["submit"])){
+        
+			$role=filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+			
+			if($role){
+            $ajoutrole ="INSERT INTO role (nom)
+            VALUES ("nom")";
+            $requete->execute(["nom" => $role]);")	
+			}
+        }
+            self::listeRoles();
+    }
 }
+    
