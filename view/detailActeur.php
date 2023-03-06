@@ -24,6 +24,7 @@
 <?php }?>
 </table>
 
+
 <?php
 
 $titre = "Details des acteurs";

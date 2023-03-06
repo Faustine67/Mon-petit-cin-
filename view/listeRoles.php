@@ -12,15 +12,19 @@
 
      <tbody>
         <?php
-        $i=0;
+
             foreach ($requete->fetchAll() as $role){ ?>
             <tr>
-                <td><?= $i++ ?></td>
-                <td><?= $role["nom"] ?></td>
-            </tr>
+            <td><a href="index.php?action=detailRoles&id=<?=$role["id_role"]?>"><?=$genre["nom"] ?></a></td>
+
         <?php }?>
         </tbody>
     </table>
+<!--<p>Ajouter un nouveau role : </p> -->
+
+<!-- <form action=index.php?action=addRole method="post">
+    <input type="text" name = "nom" maxlength="50">
+    <input type="submit" name = "submit" value="Ajouter"> -->
 
     <?php
 

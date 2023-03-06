@@ -1,6 +1,5 @@
 <?php ob_start(); ?>
-
-<p> Il y a <?= $requete->rowCount() ?> acteurs </p>
+<p> Il y a <?php echo $requete->rowCount() ?> acteurs </p>
 
 <h2>Liste des Acteurs</h2>
 <table>
@@ -16,7 +15,7 @@
             ?>
             <tr>
                 <td><a href= "index.php?action=detailActeur&id=<?=$acteur["id_acteur"]?>"><?=$acteur["prenom"]?></a></td>
-                <td><a href= "index.php?action=detailActeur&id=<?=$acteur["id_acteur"]?>"><?=$acteur["nomActeur"]?></a></td> 
+                <td><a href= "index.php?action=detailActeur&id=<?=$acteur["id_acteur"]?>"><?=$acteur["nom"]?></a></td> 
             </tr>
      <?php }?>
     </tbody>

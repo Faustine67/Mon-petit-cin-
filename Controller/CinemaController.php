@@ -20,7 +20,7 @@ class CinemaController {
     public function listActeurs() {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT id_acteur ,nom as nomActeur, prenom, sexe, date_naissance 
+            SELECT id_acteur ,nom , prenom, sexe, date_naissance 
             FROM acteur
             ");
         require "view/listeActeurs.php";
@@ -33,14 +33,6 @@ class CinemaController {
         ");
         require "view/listeRealisateurs.php";
     }
-    public function listRoles() {
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
-        SELECT nom 
-        FROM role
-        ");
-        require "view/listeRoles.php";
-    }
 
     public function listGenres() {
         $pdo = Connect::seConnecter();
@@ -49,6 +41,14 @@ class CinemaController {
         FROM genre
         ");
         require "view/listeGenres.php";
+    }
+    public function listRoles() {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+         SELECT id_role,nom
+        FROM role
+        ");
+        require "view/listeRoles.php";
     }
     public function listCastings() {
         $pdo = Connect::seConnecter();
@@ -151,21 +151,61 @@ class CinemaController {
         require "view/detailGenre.php";
     }
     
-    public function addRole(){ 
-        $pdo = Connect::SeConnecter();
-        $requete=$pdo->prepare("
+    public function detailRole($id){
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+        SELECT nom 
+        FROM role r
+        WHERE r.id_role= :id_role
+        ");
+        $requete->execute(["id_role"=> $id]);
 
-        if(isset($_POST["submit"])){
-        
-			$role=filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-			
-			if($role){
-            $ajoutrole ="INSERT INTO role (nom)
-            VALUES ("nom")";
-            $requete->execute(["nom" => $role]);")	
-			}
-        }
-            self::listeRoles();
+       $filmrole=$pdo->prepare("
+       SELECT c.film_id,  f.titre,r.nom,
+        FROM casting c
+        INNER JOIN film f ON c.film_id=f.id_film
+        INNER JOIN role r ON c.role_id=r.id_role
+            WHERE r.id_role = :id_role
+        ");
+
+        $filmrole->execute(["id_role"=> $id]);
+
+        require "view/detailRole.php";
     }
 }
-    
+
+    // public function addRole(){ 
+    //     $pdo = Connect::SeConnecter();
+    //     $requete=$pdo->prepare("
+
+    //     if(isset($_POST["submit"])){
+        
+	// 		$role=filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+			
+	// 		if($role){
+    //         $ajoutrole ="INSERT INTO role (nom)
+    //         VALUES ("nom")";
+    //         $requete->execute(["nom"=> $role]);")	
+	// 		}
+    //     }
+    //         self::listeRoles();
+    // }
+
+//     public function addRole(){
+
+//         if(isset($_POST['submit'])){
+
+//             $nom_genre = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+//             if($nom_genre){
+
+//                 $pdo = Connect::seConnecter();
+//                 $sqlQuery =  "INSERT INTO genre (nom)
+//                 VALUES (:nom)";
+//                 $requete = $pdo->prepare($sqlQuery);
+//                 $requete->execute(["nom" => $nom_genre]);
+//             }
+//         }
+
+//         self::listeRoles();
+// }
