@@ -15,8 +15,21 @@
         <?php }?>
         </tbody>
     </table>
+    <p>Ajouter un nouveau film</p>
+    
+    <form action=index.php?action=addFilm method="post">
+    <input type="text" name = "titre" maxlength="50">
+   <input type="date" name = "date_sortie">
+    <!--<input type="text" name = "synopsis" maxlength="5">
+    <input type="integer" name = "duree">
+    <input type="number" name = "note"> -->
 
-    <?php
+
+    <input type="submit" name = "submit" value="Ajouter">
+
+
+<?php
+
 
     $titre = "Liste des films";
     $titre_secondaire= "Liste des films";

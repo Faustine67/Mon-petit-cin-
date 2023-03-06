@@ -42,6 +42,34 @@ class CinemaController {
 
         require "view/detailFilm.php";
     }
+    public function addFilm(){
+        if(isset($_POST['submit'])){
+            $titre= filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $date_sortie= filter_input(INPUT_POST, "date_sortie", FILTER_SANITIZE_NUMBER_INT);
+
+            // $synopsis= filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            // $duree= filter_input(INPUT_POST, "duree",FILTER_SANITIZE_NUMBER_INT);
+            // $note= filter_input(INPUT_POST, "note",FILTER_SANITIZE_NUMBER_INT);
+
+           
+            if($titre && $date_sortie){
+               // && $date_sortie && $synopsis && $duree && $note
+                $pdo = Connect::seConnecter();
+                $sqlQuery =  "INSERT INTO film (titre,date_sortie)
+                -- synopsis,duree,note -->
+                VALUES (:titre,:date_sortie)";
+                //:synopsis,:duree,:note
+               
+                $requete = $pdo->prepare($sqlQuery);
+                $requete->execute(['titre'=> $titre,'date_sortie'=>$date_sortie]);
+                //'date_sortie'=>$date_sortie,'synopsis'=>$synopsis,'duree'=>$duree,'note'=>$note //
+               
+            }
+        }
+
+        self::listFilms(); 
+    }
+
 
     public function listActeurs() {
         $pdo = Connect::seConnecter();
@@ -72,6 +100,31 @@ class CinemaController {
         $filmographie->execute(["id_acteur"=> $id]);
 
         require "view/detailActeur.php";
+    }
+
+    public function addActeur(){
+        if(isset($_POST['submit'])){
+
+            $nom_acteur= filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $prenom_acteur= filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexe_acteur= filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $date_naissance= filter_input(INPUT_POST, "date_naissance", FILTER_SANITIZE_NUMBER_INT);
+
+
+           
+            if($nom_acteur && $prenom_acteur && $sexe_acteur && $date_naissance){
+
+                $pdo = Connect::seConnecter();
+                $sqlQuery =  "INSERT INTO acteur (nom,prenom,sexe,date_naissance)
+                VALUES (:nom,:prenom,:sexe,:date_naissance)";
+               
+                $requete = $pdo->prepare($sqlQuery);
+                $requete->execute(['nom'=> $nom_acteur,'prenom'=>$prenom_acteur,'sexe'=>$sexe_acteur,'date_naissance'=>$date_naissance]);
+
+            }
+        }
+
+        self::listActeurs(); 
     }
 
     public function listRealisateurs() {

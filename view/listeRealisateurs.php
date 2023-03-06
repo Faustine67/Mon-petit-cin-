@@ -21,7 +21,7 @@
         <?php }?>
         </tbody>
     </table>
-    <p>Ajouter un nouveau genre : </p>
+    <p>Ajouter un nouveau realisateur : </p>
 
 <form action=index.php?action=addRealisateur method="post">
     <input type="text" name = "prenom" maxlength="50">
