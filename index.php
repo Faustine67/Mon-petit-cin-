@@ -20,11 +20,12 @@ if(isset ($_GET["action"])){
         case "detailActeur" : $ctrlCinema->detailActeur($id); break;
         case "listGenres": $ctrlCinema->listGenres(); break;
         case "detailGenre": $ctrlCinema->detailGenre($id);break;
+        case "addGenre": $ctrlCinema->addGenre(); break;
         case "listRealisateurs": $ctrlCinema->listRealisateurs(); break;
         case "detailRealisateur" : $ctrlCinema->detailRealisateur($id);break;
         case "listRoles": $ctrlCinema->listRoles(); break;
         case "detailRole": $ctrlCinema->detailRole($id); break;
-        case "addRole": $ctrlCinema->addRole($id); break;
+        case "addRole": $ctrlCinema->addRole(); break;
         case "listCastings": $ctrlCinema->listCastings(); break;
     }
 }

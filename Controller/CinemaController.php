@@ -17,50 +17,6 @@ class CinemaController {
             ");
             require "view/listeFilms.php";
     }   
-    public function listActeurs() {
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
-            SELECT id_acteur ,nom , prenom, sexe, date_naissance 
-            FROM acteur
-            ");
-        require "view/listeActeurs.php";
-    }
-    public function listRealisateurs() {
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
-        SELECT id_realisateur,nom, prenom 
-        FROM realisateur
-        ");
-        require "view/listeRealisateurs.php";
-    }
-
-    public function listGenres() {
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
-        SELECT id_genre,libelle 
-        FROM genre
-        ");
-        require "view/listeGenres.php";
-    }
-    public function listRoles() {
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
-         SELECT id_role,nom
-        FROM role
-        ");
-        require "view/listeRoles.php";
-    }
-    public function listCastings() {
-        $pdo = Connect::seConnecter();
-        $requete= $pdo->query("
-        SELECT f.titre, a.nom as acteurNom, a.prenom as acteurPrenom, r.nom as roleNom
-        FROM casting c
-        INNER JOIN film f ON c.film_id=f.id_film
-        INNER JOIN acteur a ON c.acteur_id=a.id_acteur
-        INNER JOIN role r ON c.role_id=r.id_role
-        ");
-        require "view/listeCastings.php";
-    }
 
     public function detailFilm($id) {
 
@@ -87,6 +43,15 @@ class CinemaController {
         require "view/detailFilm.php";
     }
 
+    public function listActeurs() {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+            SELECT id_acteur ,nom , prenom, sexe, date_naissance 
+            FROM acteur
+            ");
+        require "view/listeActeurs.php";
+    }
+
     public function detailActeur($id){
         $pdo = Connect::seConnecter();
         $requete= $pdo->prepare("
@@ -107,6 +72,14 @@ class CinemaController {
         $filmographie->execute(["id_acteur"=> $id]);
 
         require "view/detailActeur.php";
+    }
+    public function listRealisateurs() {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+        SELECT id_realisateur,nom, prenom 
+        FROM realisateur
+        ");
+        require "view/listeRealisateurs.php";
     }
 
     public function detailRealisateur($id){
@@ -130,6 +103,15 @@ class CinemaController {
         require "view/detailRealisateur.php";
     }
 
+    public function listGenres() {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+        SELECT id_genre,libelle 
+        FROM genre
+        ");
+        require "view/listeGenres.php";
+    }
+
     public function detailGenre($id){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
@@ -150,7 +132,41 @@ class CinemaController {
 
         require "view/detailGenre.php";
     }
-    
+
+    public function addGenre(){
+
+        if(isset($_POST['submit'])){
+
+            $nom_libelle= filter_input(INPUT_POST, "libelle", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+           
+            if($nom_libelle){
+
+         
+                $pdo = Connect::seConnecter();
+                $sqlQuery =  "INSERT INTO genre (libelle)
+                VALUES (:libelle)";
+               
+                $requete = $pdo->prepare($sqlQuery);
+                $requete->execute(['libelle' => $nom_libelle]);
+
+               
+
+            }
+        }
+        // require "view/listeGenres.php";
+
+        self::listGenres();
+    }
+
+    public function listRoles() {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+         SELECT id_role,nom
+        FROM role
+        ");
+        require "view/listeRoles.php";
+    }
+
     public function detailRole($id){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
@@ -173,7 +189,6 @@ class CinemaController {
         require "view/detailRole.php";
     }
 
-
     public function addRole(){
 
         if(isset($_POST['submit'])){
@@ -191,5 +206,22 @@ class CinemaController {
         }
 
         self::listRoles();
-}
+    }
+
+    public function listCastings() {
+        $pdo = Connect::seConnecter();
+        $requete= $pdo->query("
+        SELECT f.titre, a.nom as acteurNom, a.prenom as acteurPrenom, r.nom as roleNom
+        FROM casting c
+        INNER JOIN film f ON c.film_id=f.id_film
+        INNER JOIN acteur a ON c.acteur_id=a.id_acteur
+        INNER JOIN role r ON c.role_id=r.id_role
+        ");
+        require "view/listeCastings.php";
+    }
+
+
+
+
+    
 }
