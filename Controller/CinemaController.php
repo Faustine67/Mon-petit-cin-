@@ -161,11 +161,11 @@ class CinemaController {
         $requete->execute(["id_role"=> $id]);
 
        $filmrole=$pdo->prepare("
-       SELECT c.film_id,  f.titre,r.nom,
+       SELECT c.film_id, f.titre, r.nom
         FROM casting c
         INNER JOIN film f ON c.film_id=f.id_film
         INNER JOIN role r ON c.role_id=r.id_role
-            WHERE r.id_role = :id_role
+        WHERE r.id_role = :id_role
         ");
 
         $filmrole->execute(["id_role"=> $id]);

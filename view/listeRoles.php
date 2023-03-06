@@ -1,21 +1,20 @@
 <?php ob_start(); ?>
 
-<p class="uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> roles </p>
+<p> Il y a <?= $requete->rowCount() ?> roles </p>
 
+<h2>Liste des Roles</h2>
 <table>
     <thread>
         <tr>
-            <th>Liste des Roles</th>
-            <th>roles</th>
+            <th>Roles</th>
         </tr>
      </thread>
-
      <tbody>
         <?php
 
             foreach ($requete->fetchAll() as $role){ ?>
             <tr>
-            <td><a href="index.php?action=detailRoles&id=<?=$role["id_role"]?>"><?=$genre["nom"] ?></a></td>
+            <td><a href="index.php?action=detailRole&id=<?=$role["id_role"]?>"><?=$role["nom"] ?></a></td>
 
         <?php }?>
         </tbody>
