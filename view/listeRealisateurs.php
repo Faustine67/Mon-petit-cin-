@@ -6,8 +6,8 @@
 <table>
     <thread>
         <tr>
-            <th>Nom</th>
             <th>Prénom</th>
+            <th>Nom</th>
         </tr>
      </thread>
      <tbody>
@@ -21,6 +21,12 @@
         <?php }?>
         </tbody>
     </table>
+    <p>Ajouter un nouveau genre : </p>
+
+<form action=index.php?action=addRealisateur method="post">
+    <input type="text" name = "prenom" maxlength="50">
+    <input type="text" name = "nom" maxlength="50">
+    <input type="submit" name = "submit" value="Ajouter">
 
     <?php
 

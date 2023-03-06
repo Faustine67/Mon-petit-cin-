@@ -73,6 +73,7 @@ class CinemaController {
 
         require "view/detailActeur.php";
     }
+
     public function listRealisateurs() {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
@@ -102,6 +103,29 @@ class CinemaController {
 
         require "view/detailRealisateur.php";
     }
+
+    public function addRealisateur(){
+        if(isset($_POST['submit'])){
+
+            $nom_realisateur= filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $prenom_realisateur= filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+           
+            if($nom_realisateur && $prenom_realisateur){
+
+                $pdo = Connect::seConnecter();
+                $sqlQuery =  "INSERT INTO realisateur (nom,prenom)
+                VALUES (:nom,:prenom)";
+               
+                $requete = $pdo->prepare($sqlQuery);
+                $requete->execute(['nom'=> $nom_realisateur,'prenom'=>$prenom_realisateur]);
+
+            }
+        }
+
+        self::listRealisateurs(); 
+    }
+
 
     public function listGenres() {
         $pdo = Connect::seConnecter();
@@ -153,7 +177,6 @@ class CinemaController {
 
             }
         }
-        // require "view/listeGenres.php";
 
         self::listGenres();
     }
