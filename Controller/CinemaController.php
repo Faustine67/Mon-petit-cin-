@@ -172,40 +172,24 @@ class CinemaController {
 
         require "view/detailRole.php";
     }
+
+
+    public function addRole(){
+
+        if(isset($_POST['submit'])){
+
+            $nom_role= filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if($nom_role){
+
+                $pdo = Connect::seConnecter();
+                $sqlQuery =  "INSERT INTO role (nom)
+                VALUES (:nom)";
+                $requete = $pdo->prepare($sqlQuery);
+                $requete->execute(["nom" => $nom_role]);
+            }
+        }
+
+        self::listRoles();
 }
-
-    // public function addRole(){ 
-    //     $pdo = Connect::SeConnecter();
-    //     $requete=$pdo->prepare("
-
-    //     if(isset($_POST["submit"])){
-        
-	// 		$role=filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-			
-	// 		if($role){
-    //         $ajoutrole ="INSERT INTO role (nom)
-    //         VALUES ("nom")";
-    //         $requete->execute(["nom"=> $role]);")	
-	// 		}
-    //     }
-    //         self::listeRoles();
-    // }
-
-//     public function addRole(){
-
-//         if(isset($_POST['submit'])){
-
-//             $nom_genre = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-//             if($nom_genre){
-
-//                 $pdo = Connect::seConnecter();
-//                 $sqlQuery =  "INSERT INTO genre (nom)
-//                 VALUES (:nom)";
-//                 $requete = $pdo->prepare($sqlQuery);
-//                 $requete->execute(["nom" => $nom_genre]);
-//             }
-//         }
-
-//         self::listeRoles();
-// }
+}

@@ -19,11 +19,11 @@
         <?php }?>
         </tbody>
     </table>
-<!--<p>Ajouter un nouveau role : </p> -->
+<p>Ajouter un nouveau role : </p>
 
-<!-- <form action=index.php?action=addRole method="post">
+<form action=index.php?action=addRole method="post">
     <input type="text" name = "nom" maxlength="50">
-    <input type="submit" name = "submit" value="Ajouter"> -->
+    <input type="submit" name = "submit" value="Ajouter">
 
     <?php
 
