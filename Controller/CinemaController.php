@@ -23,9 +23,9 @@ class CinemaController
             SELECT id_realisateur,nom, prenom 
             FROM realisateur
             ");
-        $requeteGenre =$pdo->query("
+        $requeteGenre = $pdo->query("
             SELECT id_genre,libelle
-            FROM libelle
+            FROM genre
             ");
 
         require "view/listeFilms.php";
@@ -59,25 +59,29 @@ class CinemaController
     public function addFilm()
     {
         if (isset($_POST['submit'])) {
+
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $date_sortie = filter_input(INPUT_POST, "date_sortie", FILTER_SANITIZE_NUMBER_INT);
             $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
             $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_INT);
+            $realisateur_id = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_NUMBER_INT);
+            $genre_id = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_NUMBER_INT);
 
+            if ($titre && $date_sortie && $synopsis && $duree && $note && $realisateur_id && $genre_id) {
 
-            if ($titre && $date_sortie && $synopsis && $duree && $note) {
                 $pdo = Connect::seConnecter();
-                $sqlQuery =  "INSERT INTO film (titre,date_sortie,synopsis,duree,note)
-                VALUES (:titre,:date_sortie,:synopsis,:duree,:note)";
-
+                $sqlQuery =  "INSERT INTO film (titre,date_sortie,synopsis,duree,note,realisateur_id,genre_id)
+            VALUES (:titre,:date_sortie,:synopsis,:duree,:note,:realisateur_id,:genre_id)";
                 $requete = $pdo->prepare($sqlQuery);
                 $requete->execute([
                     'titre' => $titre,
                     'date_sortie' => $date_sortie,
                     'synopsis' => $synopsis,
                     'duree' => $duree,
-                    'note' => $note
+                    'note' => $note,
+                    'realisateur_id' => $realisateur_id,
+                    'genre_id' => $genre_id
                 ]);
             }
         }
@@ -184,13 +188,14 @@ class CinemaController
 
 
             if ($nom_realisateur && $prenom_realisateur) {
-
                 $pdo = Connect::seConnecter();
                 $sqlQuery =  "INSERT INTO realisateur (nom,prenom)
                 VALUES (:nom,:prenom)";
-
                 $requete = $pdo->prepare($sqlQuery);
-                $requete->execute(['nom' => $nom_realisateur, 'prenom' => $prenom_realisateur]);
+                $requete->execute([
+                    'nom' => $nom_realisateur,
+                    'prenom' => $prenom_realisateur
+                ]);
             }
         }
 
