@@ -18,6 +18,16 @@ class CinemaController
             FROM film
             INNER JOIN genre ON film.genre_id = genre.id_genre
             ");
+
+        $requeteRealisateur = $pdo->query("
+            SELECT id_realisateur,nom, prenom 
+            FROM realisateur
+            ");
+        $requeteGenre =$pdo->query("
+            SELECT id_genre,libelle
+            FROM libelle
+            ");
+
         require "view/listeFilms.php";
     }
 
@@ -62,7 +72,13 @@ class CinemaController
                 VALUES (:titre,:date_sortie,:synopsis,:duree,:note)";
 
                 $requete = $pdo->prepare($sqlQuery);
-                $requete->execute(['titre' => $titre, 'date_sortie' => $date_sortie, 'synopsis' => $synopsis, 'duree' => $duree, 'note' => $note]);
+                $requete->execute([
+                    'titre' => $titre,
+                    'date_sortie' => $date_sortie,
+                    'synopsis' => $synopsis,
+                    'duree' => $duree,
+                    'note' => $note
+                ]);
             }
         }
 
@@ -111,7 +127,6 @@ class CinemaController
             $prenom_acteur = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexe_acteur = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $date_naissance = filter_input(INPUT_POST, "date_naissance", FILTER_SANITIZE_NUMBER_INT);
-
 
 
             if ($nom_acteur && $prenom_acteur && $sexe_acteur && $date_naissance) {

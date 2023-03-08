@@ -25,7 +25,12 @@
     <input type="text" name="synopsis" maxlength="255">
     <input type="integer" name="duree">
     <input type="number" name="note">
-
+    <select name="realisateurs" id="">
+        <?php
+        //foreach()
+        ?>
+    </select>
+    
 
     <input type="submit" name="submit" value="Ajouter">
 

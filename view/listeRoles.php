@@ -23,6 +23,7 @@
 
 <form action=index.php?action=addRole method="post">
     <input type="text" name = "nom" maxlength="50">
+    
     <input type="submit" name = "submit" value="Ajouter">
 
     <?php
