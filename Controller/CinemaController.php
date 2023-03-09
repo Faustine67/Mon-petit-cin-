@@ -14,7 +14,7 @@ class CinemaController
     {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT id_film, titre, synopsis, duree, note, date_sortie,libelle
+            SELECT id_film, titre, synopsis, duree, note, date_sortie,libelle,affiche
             FROM film
             INNER JOIN genre ON film.genre_id = genre.id_genre
             ");
@@ -36,7 +36,7 @@ class CinemaController
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-            SELECT f.titre AS titre, f.synopsis, f.duree, f.note,r.nom,r.prenom,g.libelle,date_sortie
+            SELECT f.titre AS titre, f.synopsis, f.duree, f.note,r.nom,r.prenom,g.libelle,date_sortie,affiche
             FROM film f
             INNER JOIN realisateur r on f.realisateur_id=r.id_realisateur
             INNER JOIN genre g on f.genre_id=g.id_genre
@@ -94,7 +94,7 @@ class CinemaController
     {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT id_acteur ,CONCAT(nom , ' ', prenom) AS act, sexe, date_naissance 
+            SELECT id_acteur ,CONCAT(nom , ' ', prenom) AS act, sexe, date_naissance,photo 
             FROM acteur
             ");
         require "view/listeActeurs.php";
@@ -104,7 +104,7 @@ class CinemaController
     {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-        SELECT a.nom as acteurNom, a.prenom as acteurPrenom, a.sexe, a.date_naissance
+        SELECT a.nom as acteurNom, a.prenom as acteurPrenom, a.sexe, a.date_naissance,photo
         FROM acteur a
         WHERE a.id_acteur = :id_acteur
         ");
@@ -151,7 +151,7 @@ class CinemaController
     {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-        SELECT id_realisateur,nom, prenom 
+        SELECT id_realisateur,nom, prenom,photo 
         FROM realisateur
         ");
         require "view/listeRealisateurs.php";
@@ -161,7 +161,7 @@ class CinemaController
     {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-        SELECT r.nom, r.prenom
+        SELECT r.nom, r.prenom,photo
         FROM realisateur r
         WHERE r.id_realisateur = :id_realisateur
         ");

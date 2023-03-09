@@ -12,6 +12,8 @@
         <?php
         foreach ($requete->fetchAll() as $film) { ?>
             <tr>
+                <td><img src="<?= $film["affiche"] ?>">
+                </td>
                 <td><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><?= $film["titre"] ?></a></td>
             </tr>
         <?php } ?>
@@ -20,12 +22,11 @@
 <p>Ajouter un nouveau film</p>
 
 <form action=index.php?action=addFilm method="post">
-    <input type="text" name="titre" maxlength="50">
-    <input type="number" name="date_sortie">
-    <input type="text" name="synopsis" maxlength="255">
-    <input type="number" name="duree">
-    <input type="number" name="note">
-
+    <input type="text" name="titre" maxlength="50" placeholder="Titre">
+    <input type="number" name="date_sortie" placeholder="Date de Sortie">
+    <textarea type="text" name="synopsis" maxlength="255" placeholder="Synopsis"> </textarea>
+    <input type="number" name="duree" placeholder="duree">
+    <input type="number" name="note" placeholder="note">
     <select name="realisateur" id="nom">
         <?php
         foreach ($requeteRealisateur->fetchAll() as $realisateur) { ?>
