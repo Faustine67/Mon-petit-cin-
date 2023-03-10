@@ -22,7 +22,7 @@
 <p>Ajouter un nouveau film</p>
 
 <form action=index.php?action=addFilm method="post">
-    <input type="text" name="titre" maxlength="50" placeholder="Titre">
+    <input type="text" name="titre" maxlength="50" placeholder="Titre" required>
     <input type="number" name="date_sortie" placeholder="Date de Sortie">
     <textarea type="text" name="synopsis" maxlength="255" placeholder="Synopsis"> </textarea>
     <input type="number" name="duree" placeholder="duree">
@@ -46,7 +46,7 @@
     </select>
     <div class="formInput">
         <label for="affiche" name="affiche" id="affiche">Affiche: </label>
-            <input type="file" name="affiche" id="affiche" accept="image/png, image/jpeg">
+            <input type="url" name="affiche" id="affiche" accept="image/png, image/jpeg">
     </div>
 
     <input type="submit" name="submit" value="Ajouter">

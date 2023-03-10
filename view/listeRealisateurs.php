@@ -27,6 +27,10 @@
 <form action=index.php?action=addRealisateur method="post">
     <input type="text" name="prenom" maxlength="50" placeholder="prenom">
     <input type="text" name="nom" maxlength="50" placeholder="nom">
+    <div class="formInput">
+        <label for="photo" name="photo" id="photo">Photo </label>
+            <input type="url" name="photo" id="photo" accept="image/png, image/jpeg">
+    </div>
     <input type="submit" name="submit" value="Ajouter">
 
     <?php

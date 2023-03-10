@@ -28,8 +28,10 @@
     <input type="text" name="prenom" maxlength="50" placeholder="Prenom">
     <input type="text" name="sexe" maxlength="5" placeholder="Genre">
     <input type="date" name="date_naissance">
-
-
+    <div class="formInput">
+        <label for="photo" name="photo" id="photo">Photo </label>
+            <input type="url" name="photo" id="photo" accept="image/png, image/jpeg">
+    </div>
     <input type="submit" name="submit" value="Ajouter">
 
 

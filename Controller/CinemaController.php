@@ -133,16 +133,16 @@ class CinemaController
             $prenom_acteur = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexe_acteur = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $date_naissance = filter_input(INPUT_POST, "date_naissance", FILTER_SANITIZE_NUMBER_INT);
-
-
-            if ($nom_acteur && $prenom_acteur && $sexe_acteur && $date_naissance) {
+            $photo = filter_input(INPUT_POST, "photo", FILTER_SANITIZE_URL);
+        
+            if ($nom_acteur && $prenom_acteur && $sexe_acteur && $date_naissance && $photo) {
 
                 $pdo = Connect::seConnecter();
-                $sqlQuery =  "INSERT INTO acteur (nom,prenom,sexe,date_naissance)
-                VALUES (:nom,:prenom,:sexe,:date_naissance)";
+                $sqlQuery =  "INSERT INTO acteur (nom,prenom,sexe,date_naissance,photo)
+                VALUES (:nom,:prenom,:sexe,:date_naissance,:photo)";
 
                 $requete = $pdo->prepare($sqlQuery);
-                $requete->execute(['nom' => $nom_acteur, 'prenom' => $prenom_acteur, 'sexe' => $sexe_acteur, 'date_naissance' => $date_naissance]);
+                $requete->execute(['nom' => $nom_acteur, 'prenom' => $prenom_acteur, 'sexe' => $sexe_acteur, 'date_naissance' => $date_naissance, 'photo'=>$photo]);
             }
         }
 
@@ -187,16 +187,19 @@ class CinemaController
 
             $nom_realisateur = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $prenom_realisateur = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $photo = filter_input(INPUT_POST, "photo", FILTER_SANITIZE_URL);
 
 
-            if ($nom_realisateur && $prenom_realisateur) {
+
+            if ($nom_realisateur && $prenom_realisateur && photo) {
                 $pdo = Connect::seConnecter();
-                $sqlQuery =  "INSERT INTO realisateur (nom,prenom)
-                VALUES (:nom,:prenom)";
+                $sqlQuery =  "INSERT INTO realisateur (nom,prenom,photo)
+                VALUES (:nom,:prenom,:photo)";
                 $requete = $pdo->prepare($sqlQuery);
                 $requete->execute([
                     'nom' => $nom_realisateur,
-                    'prenom' => $prenom_realisateur
+                    'prenom' => $prenom_realisateur,
+                    'photo'=> $photo,
                 ]);
             }
         }
