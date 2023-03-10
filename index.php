@@ -39,7 +39,7 @@ if(isset ($_GET["action"])){
 }
 
 else{
-    $ctrlCinema->listActeurs();
+    $ctrlCinema->listFilms();
 }
 
 ?>

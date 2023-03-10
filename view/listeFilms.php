@@ -44,6 +44,10 @@
             </option>
         <?php } ?>
     </select>
+    <div class="formInput">
+        <label for="affiche" name="affiche" id="affiche">Affiche: </label>
+            <input type="file" name="affiche" id="affiche" accept="image/png, image/jpeg">
+    </div>
 
     <input type="submit" name="submit" value="Ajouter">
 

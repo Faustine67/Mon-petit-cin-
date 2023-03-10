@@ -67,12 +67,13 @@ class CinemaController
             $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_INT);
             $realisateur_id = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_NUMBER_INT);
             $genre_id = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_NUMBER_INT);
+            $affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_URL);
 
-            if ($titre && $date_sortie && $synopsis && $duree && $note && $realisateur_id && $genre_id) {
+            if ($titre && $date_sortie && $synopsis && $duree && $note && $realisateur_id && $genre_id && $affiche) {
 
                 $pdo = Connect::seConnecter();
-                $sqlQuery =  "INSERT INTO film (titre,date_sortie,synopsis,duree,note,realisateur_id,genre_id)
-            VALUES (:titre,:date_sortie,:synopsis,:duree,:note,:realisateur_id,:genre_id)";
+                $sqlQuery =  "INSERT INTO film (titre,date_sortie,synopsis,duree,note,realisateur_id,genre_id,affiche)
+            VALUES (:titre,:date_sortie,:synopsis,:duree,:note,:realisateur_id,:genre_id,:affiche)";
                 $requete = $pdo->prepare($sqlQuery);
                 $requete->execute([
                     'titre' => $titre,
@@ -81,7 +82,8 @@ class CinemaController
                     'duree' => $duree,
                     'note' => $note,
                     'realisateur_id' => $realisateur_id,
-                    'genre_id' => $genre_id
+                    'genre_id' => $genre_id,
+                    'affiche'=> $affiche,
                 ]);
             }
         }
