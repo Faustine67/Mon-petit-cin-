@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
-<p> Il y a <?php echo $requete->rowCount()
-            ?> films </p>
+<!-- <p> Il y a <?php //echo $requete->rowCount()
+            ?> films </p> -->
 <table>
     <thread>
         <tr>

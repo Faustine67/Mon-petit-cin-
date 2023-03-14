@@ -62,3 +62,8 @@ nav{
 .horizontal-list a{
     display: block;
 }
+
+.acteur{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;}
