@@ -2,12 +2,11 @@
 ob_start();
 $acteur = $requete->fetch();
 ?>
-<div class=acteur>
+
 <h1><?= $acteur["acteurPrenom"] ?> <?= $acteur["acteurNom"] ?></h1>
 <img src="<?= $acteur["photo"] ?>" alt="photo">
 <p>Genre:<?= $acteur["sexe"] ?></p>
 <p>Date de naissance: <?= $acteur["date_naissance"] ?></p>
-</div>
 
 <h2> Filmographie </h2>
 <table>

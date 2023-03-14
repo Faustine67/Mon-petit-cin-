@@ -1,4 +1,12 @@
 @import url(https://fonts.googleapis.com/css2?family=Aldrich&display=swap);
+*{
+    margin:0;
+    padding:0;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    list-style: non;
+}
 header{
     height:50px;
     width:100px;
@@ -62,8 +70,15 @@ nav{
 .horizontal-list a{
     display: block;
 }
-
-.acteur{
+.liste{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;}
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+
+}
+.acteur{
+    flex-grow: 1;
+    width: 33%;
+    height: 100px;
+}
