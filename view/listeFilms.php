@@ -2,23 +2,12 @@
 
 <p> Il y a <?php echo $requete->rowCount()
             ?> films </p>
-<table>
-    <thread>
-        <tr>
-            <th>Titre</th>
-        </tr>
-    </thread>
-    <tbody>
+
         <?php
         foreach ($requete->fetchAll() as $film) { ?>
-            <tr>
-                <td><img src="<?= $film["affiche"] ?>">
-                </td>
-                <td><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><?= $film["titre"] ?></a></td>
-            </tr>
+                <a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><img src="<?= $film["affiche"] ?>" name="film">
         <?php } ?>
-    </tbody>
-</table>
+ 
 <p>Ajouter un nouveau film</p>
 
 <form action=index.php?action=addFilm method="post">

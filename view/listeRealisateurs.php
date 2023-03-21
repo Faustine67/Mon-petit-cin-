@@ -16,8 +16,7 @@
         ?>
             <tr>
                 <td><img src="<?= $realisateur["photo"] ?>">
-                <td><a href="index.php?action=detailRealisateur&id=<?= $realisateur["id_realisateur"] ?>"><?= $realisateur["prenom"] ?></a></td>
-                <td><a href="index.php?action=detailRealisateur&id=<?= $realisateur["id_realisateur"] ?>"><?= $realisateur["nom"] ?></a></td>
+                <td><a href="index.php?action=detailRealisateur&id=<?= $realisateur["id_realisateur"] ?>"><?= $realisateur["reali"] ?></a></td>
             </tr>
         <?php } ?>
     </tbody>

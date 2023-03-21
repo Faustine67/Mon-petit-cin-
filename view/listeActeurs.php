@@ -15,7 +15,7 @@
         foreach ($requete->fetchAll() as $acteur) {
         ?>
             <tr>
-                <td><img src="<?= $acteur["photo"] ?>">
+                <td><img src="<?= $acteur["photo"] ?>" name="acteur">
                 <td><a href="index.php?action=detailActeur&id=<?= $acteur["id_acteur"] ?>"><?= $acteur["act"] ?></a></td>
             </tr>
         <?php } ?>

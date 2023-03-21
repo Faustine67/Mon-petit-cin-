@@ -55,10 +55,24 @@ nav{
     margin: 0;
     padding: 0;
     text-align: center;
+    color:white;
+    text-decoration: none;
 }
 .horizontal-list li{
     display: inline-block;
 }
 .horizontal-list a{
     display: block;
+
+}
+
+img film{
+    width: 400px;
+    height: 200px;
+    border-radius: 15px;
+}
+
+img acteur{
+    border-radius: 15px;
+    
 }

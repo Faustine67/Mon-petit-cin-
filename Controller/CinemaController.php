@@ -153,7 +153,7 @@ class CinemaController
     {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-        SELECT id_realisateur,nom, prenom,photo 
+        SELECT id_realisateur,CONCAT(nom , ' ', prenom) AS reali,photo 
         FROM realisateur
         ");
         require "view/listeRealisateurs.php";
