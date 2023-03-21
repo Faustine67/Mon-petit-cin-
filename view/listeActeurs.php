@@ -4,23 +4,16 @@
             ?> acteurs </p>
 
 <h2>Liste des Acteurs</h2>
-<table>
-    <thread>
-        <tr>
-            <th>Acteur</th>
-        </tr>
-    </thread>
-    <tbody>
+    <div class="liste">
         <?php
         foreach ($requete->fetchAll() as $acteur) {
         ?>
             <tr>
-                <td><img src="<?= $acteur["photo"] ?>" name="acteur">
+                <td><img src="<?= $acteur["photo"] ?>">
                 <td><a href="index.php?action=detailActeur&id=<?= $acteur["id_acteur"] ?>"><?= $acteur["act"] ?></a></td>
             </tr>
         <?php } ?>
-    </tbody>
-</table>
+    </div>
 <p>Ajouter un nouvel acteur : </p>
 
 <form action=index.php?action=addActeur method="post">
