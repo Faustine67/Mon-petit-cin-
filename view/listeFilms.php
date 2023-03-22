@@ -1,23 +1,11 @@
 <?php ob_start(); ?>
 
-<<<<<<< HEAD
 <p> Il y a <?php echo $requete->rowCount()
             ?> films </p>
 
-=======
-<!-- <p> Il y a <?php //echo $requete->rowCount()
-            ?> films </p> -->
-<table>
-    <thread>
-        <tr>
-            <th>Titre</th>
-        </tr>
-    </thread>
-    <tbody>
->>>>>>> 3a7946168fbfd7195df8f0773c769b61d21a1a98
         <?php
         foreach ($requete->fetchAll() as $film) { ?>
-                <a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><img src="<?= $film["affiche"] ?>" name="film">
+                <a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><img src="<?= $film["affiche"] ?>" src="film">
         <?php } ?>
  
 <p>Ajouter un nouveau film</p>
