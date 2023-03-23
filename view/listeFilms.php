@@ -39,7 +39,7 @@
     </div>
 
     <input type="submit" name="submit" value="Ajouter">
-
+    </form>
 
     <?php
 
